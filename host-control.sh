@@ -45,6 +45,7 @@ do
 	'install wget curl git build-essential' \
     'change hostname' \
     'getIP' \
+    'list directory sizes' \
     'ssh-keygen' \
     'update host-control.sh' \
     'install sudo' \
@@ -88,6 +89,9 @@ do
       ;;
     'getIP')
       editable_read "ip a|grep 'inet 192.168.0'"
+      ;;
+    'list directory sizes')
+      editable_read "du -h --max-depth 1 ."
       ;;
     'edit-ssh-config')
       editable_read "sudo nano /etc/ssh/sshd_config"
