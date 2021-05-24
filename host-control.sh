@@ -42,7 +42,7 @@ do
     'reboot' \
     'shutdown' \
     'install-updates' \
-	'install wget curl git build-essential' \
+    'install wget curl git gcc' \
     'change hostname' \
     'getIP' \
     'list directory sizes' \
@@ -53,7 +53,7 @@ do
     'ufw allow' \
     'edit-ssh-config' \
     'deb10 fish shell' \
-    'create alias hc (fish shell)' \
+    'create alias hc (fish)' \
   )
   menu_from_array "${options[@]}"
   OPTION=$SELECTION
@@ -76,7 +76,7 @@ do
       commands=('sudo apt-get update' 'sudo apt-get upgrade -y')
       editable_read "${commands[@]}"
       ;;
-    'install wget curl git build-essential')
+    'install wget curl git gcc')
       editable_read "sudo apt-get install wget curl git build-essential -y"
       ;;
     'change hostname')
@@ -115,7 +115,7 @@ do
     'ufw allow')
       editable_read "sudo ufw allow from 192.168.0.0/24 to any port 5900"
       ;;
-    'create alias hc (fish shell)')
+    'create alias hc (fish)')
       editable_read "alias hc='/bin/bash /home/linux/host-control.sh'"
       printf "${bold}(run this command) > ${normal}"
       printf "funcsave hc\n"
