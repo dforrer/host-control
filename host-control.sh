@@ -46,6 +46,7 @@ do
     'change hostname' \
     'getIP' \
     'ssh-keygen' \
+    'update host-control.sh' \
     'install sudo' \
     'disable sudo pw' \
     'ufw allow' \
@@ -79,6 +80,10 @@ do
       ;;
     'change hostname')
       commands=('sudo nano /etc/hostname' 'sudo nano /etc/hosts')
+      editable_read "${commands[@]}"
+      ;;
+    'update host-control.sh')
+      commands=('git clone https://github.com/dforrer/host-control.git' 'cp ./host-control/host-control.sh ./' 'rm -rf host-control')
       editable_read "${commands[@]}"
       ;;
     'getIP')
