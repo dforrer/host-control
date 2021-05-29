@@ -51,6 +51,8 @@ do
     'install sudo' \
     'disable sudo pw' \
     'ufw allow' \
+    'create tar file/dir' \
+    'extract tar file/dir' \
     'edit-ssh-config' \
     'deb10 fish shell' \
     'create alias hc (fish)' \
@@ -69,8 +71,8 @@ do
     'shutdown')
       editable_read "sudo shutdown now"
       ;;
-	'ssh-keygen')
-	  editable_read "ssh-keygen -t ed25519 -C \"\""
+    'ssh-keygen')
+      editable_read "ssh-keygen -t ed25519 -C \"\""
       ;;
     'install-updates')
       commands=('sudo apt-get update' 'sudo apt-get upgrade -y')
@@ -114,6 +116,14 @@ do
       ;;
     'ufw allow')
       editable_read "sudo ufw allow from 192.168.0.0/24 to any port 5900"
+      ;;
+    'create tar file/dir')
+      printf "${bold}Options: c(reate), f(ile output), v(erbose), z(ip), P (absolute paths)${normal}\n"
+      editable_read "tar cfvz archiv.tar.gz host-control.sh"
+      ;;
+    'extract tar file/dir')
+      printf "${bold}Options: x(extract), f(ile output), v(erbose), z(ip), P (absolute paths)${normal}\n"
+      editable_read "tar xfvz archiv.tar.gz"
       ;;
     'create alias hc (fish)')
       editable_read "alias hc='/bin/bash /home/linux/host-control.sh'"
