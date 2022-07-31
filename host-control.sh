@@ -75,7 +75,7 @@ do
       editable_read "ssh-keygen -t ed25519 -C \"\""
       ;;
     'install-updates')
-      commands=('sudo apt-get update' 'sudo apt-get upgrade -y')
+      commands=('sudo apt-get update --allow-releaseinfo-change' 'sudo apt-get upgrade -y')
       editable_read "${commands[@]}"
       ;;
     'install wget curl git gcc')
@@ -132,7 +132,7 @@ do
       ;;
     'deb10 fish shell')
       commands=( \
-        "sudo apt update" \
+        "sudo apt update --allow-releaseinfo-change" \
         "sudo apt-get install gnupg -y" \
         "echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_10/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list" \
         "curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells:fish:release:3.gpg > /dev/null" \
