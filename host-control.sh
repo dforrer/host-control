@@ -56,6 +56,7 @@ do
     'edit-ssh-config' \
     'deb10 fish shell' \
     'create alias hc (fish)' \
+    'apps listening on ports' \
   )
   menu_from_array "${options[@]}"
   OPTION=$SELECTION
@@ -141,6 +142,9 @@ do
         "chsh -s /usr/bin/fish" \
       )
       editable_read "${commands[@]}"
+      ;;
+    'apps listening on ports')
+      editable_read "sudo netstat -tulpn"
       ;;
   esac
 done
